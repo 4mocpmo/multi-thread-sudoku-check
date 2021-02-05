@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="689.0" styleClass="base-pane" stylesheets="@sample.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFxApp.Controller">
+   
+   <children>
+      <Canvas fx:id="canvas" height="450.0" onMouseClicked="#canvasMouseClicked" width="450.0" AnchorPane.bottomAnchor="-28.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0" />
+      <Group layoutX="399.0" layoutY="211.0" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="80.0">
+         <children>
+            <Button fx:id="button9" layoutX="144.0" layoutY="169.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonNinePressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="9">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="button8" layoutX="61.0" layoutY="169.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonEightPressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="8">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="button4" defaultButton="true" layoutX="-22.0" layoutY="84.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonFourPressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="4">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="button6" defaultButton="true" layoutX="144.0" layoutY="84.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonSixPressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="6">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="button5" defaultButton="true" layoutX="61.0" layoutY="84.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonFivePressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="5">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="button1" layoutX="-22.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonOnePressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="1">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="button3" layoutX="144.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonThreePressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="3">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="button2" layoutX="61.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonTwoPressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="2">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="button7" layoutX="-22.0" layoutY="169.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonSevenPressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="7">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </Group>
+      <Button fx:id="resetButton" layoutX="466.0" layoutY="404.0" mnemonicParsing="false" onAction="#buttonResetClicked" prefHeight="33.0" prefWidth="72.0" stylesheets="@sample.css" text="reset" AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="162.0">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Button>
+      <Button fx:id="clear" layoutX="386.0" layoutY="404.0" mnemonicParsing="false" onAction="#buttonClearPressed" prefHeight="33.0" prefWidth="70.0" stylesheets="@sample.css" text="clear" AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="242.0">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Button>
+      <Button fx:id="exitButton" layoutX="546.0" layoutY="404.0" mnemonicParsing="false" onAction="#buttonExitClicked" prefHeight="33.0" prefWidth="70.0" stylesheets="@sample.css" text="exit" AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="82.0">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Button>
+      <Button fx:id="fillRandom" layoutX="253.0" layoutY="404.0" mnemonicParsing="false" onAction="#buttonFillRandomClicked" prefHeight="33.0" prefWidth="120.0" stylesheets="@sample.css" text="fillRandom" AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="321.0">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Button>
+   </children>
+</AnchorPane>
