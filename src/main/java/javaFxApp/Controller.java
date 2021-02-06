@@ -78,7 +78,7 @@ public class Controller implements Initializable{
                 // as we are drawing squares, the height is going to be the same
                 int width = 46;
                 // set the fill color to white (you could set it to whatever you want)
-                context.setFill(Color.DARKORANGE);
+                context.setFill(Color.ORANGE);
                 // draw a rounded rectangle with the calculated position and width. The last two arguments specify the rounded corner arcs width and height.
                 // Play around with those if you want.
                 context.fillRoundRect(position_x, position_y, width, width, 10, 10);
@@ -169,7 +169,7 @@ public class Controller implements Initializable{
 
     @FXML
     void buttonFillRandomClicked(){
-        int[][] arr = new int[9][9];
+        int[][] arr;
         int[][] arr2 = {
             {5,3,4,6,7,8,9,1,2},
             {6,7,2,1,9,5,3,4,8},
@@ -203,7 +203,6 @@ public class Controller implements Initializable{
                 {6,7,3,2,4,5,8,1,9},
                 {5,4,1,8,6,9,7,2,3},
         };
-        Random random = new Random();
         int a = (int)(Math.random() * (2 + 1) + 0);
         if (a == 0)
             arr = arr1;
