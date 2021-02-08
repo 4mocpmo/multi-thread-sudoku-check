@@ -48,16 +48,14 @@ public class TableCheck  implements Runnable{
         try {
             semaphore.acquire();
             System.out.println(Thread.currentThread().getName() + ": after acquire  -> available permit = "+ semaphore.availablePermits());
-            synchronized (array) {
-                    for (int i = row1 ; i <= row2 ;i++){
-                        for (int j = col1 ; j <= col2; j++){
-                            if (array[i][j] == inputNumber){
-                                count++;
-                            }
+                for (int i = row1 ; i <= row2 ;i++){
+                    for (int j = col1 ; j <= col2; j++){
+                        if (array[i][j] == inputNumber){
+                            count++;
                         }
                     }
+                }
                 checkInputForNumber[2] = count <= 1;
-            }
             semaphore.release();
             System.out.println(Thread.currentThread().getName() + ": after release  -> available permit = "+ semaphore.availablePermits());
         } catch (InterruptedException e) {

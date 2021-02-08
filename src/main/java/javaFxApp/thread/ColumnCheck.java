@@ -24,19 +24,16 @@ public class ColumnCheck implements Runnable{
         try {
             semaphore.acquire();
             System.out.println(Thread.currentThread().getName() + ": after acquire  -> available permit = "+ semaphore.availablePermits());
-            synchronized (array){
-                for (int i = 0 ; i < 9 ; i++){
-                   if (array[i][col] == inputNumber){
-                       count++;
-                   }
-                }
-                checkInputForNumber[0] = count <= 1;
+            for (int i = 0 ; i < 9 ; i++){
+               if (array[i][col] == inputNumber){
+                   count++;
+               }
             }
+            checkInputForNumber[0] = count <= 1;
             semaphore.release();
             System.out.println(Thread.currentThread().getName() + ": after release  -> available permit = "+ semaphore.availablePermits());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
     }
 }

@@ -25,14 +25,12 @@ public class RowCheck implements Runnable {
         try {
             semaphore.acquire();
             System.out.println(Thread.currentThread().getName() + ": after acquire  -> available permit = "+ semaphore.availablePermits());
-            synchronized (array){
-                for (int i = 0 ; i < 9 ; i++){
-                    if (array[row][i] == inputNumber){
-                        count++;
-                    }
+            for (int i = 0 ; i < 9 ; i++){
+                if (array[row][i] == inputNumber){
+                    count++;
                 }
-                checkInputForNumber[1] = count <= 1;
             }
+            checkInputForNumber[1] = count <= 1;
             semaphore.release();
             System.out.println(Thread.currentThread().getName() + ": after release  -> available permit = "+ semaphore.availablePermits());
         } catch (InterruptedException e) {

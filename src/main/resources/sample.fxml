@@ -5,6 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="689.0" styleClass="base-pane" stylesheets="@sample.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFxApp.Controller">
@@ -78,47 +79,51 @@
          </font></Button>
       <Separator layoutX="197.0" layoutY="55.0" orientation="VERTICAL" prefHeight="441.0" prefWidth="6.0">
          <effect>
-            <Lighting>
-               <bumpInput>
-                  <Shadow />
-               </bumpInput>
-               <light>
-                  <Light.Distant />
-               </light>
-            </Lighting>
+            <ColorAdjust contrast="1.0" hue="0.69" saturation="1.0">
+               <input>
+                  <Shadow>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Shadow>
+               </input>
+            </ColorAdjust>
          </effect></Separator>
       <Separator layoutX="348.0" layoutY="55.0" orientation="VERTICAL" prefHeight="441.0" prefWidth="6.0">
          <effect>
-            <Lighting>
-               <bumpInput>
-                  <Shadow />
-               </bumpInput>
-               <light>
-                  <Light.Distant />
-               </light>
-            </Lighting>
+            <ColorAdjust contrast="1.0" hue="0.69" saturation="1.0">
+               <input>
+                  <Shadow>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Shadow>
+               </input>
+            </ColorAdjust>
          </effect></Separator>
       <Separator layoutX="50.0" layoutY="348.0" prefHeight="6.0" prefWidth="450.0">
          <effect>
-            <Lighting>
-               <bumpInput>
-                  <Shadow />
-               </bumpInput>
-               <light>
-                  <Light.Distant />
-               </light>
-            </Lighting>
+            <ColorAdjust contrast="1.0" hue="0.69" saturation="1.0">
+               <input>
+                  <Shadow>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Shadow>
+               </input>
+            </ColorAdjust>
          </effect></Separator>
       <Separator layoutX="50.0" layoutY="198.0" prefHeight="6.0" prefWidth="450.0">
          <effect>
-            <Lighting>
-               <bumpInput>
-                  <Shadow />
-               </bumpInput>
-               <light>
-                  <Light.Distant />
-               </light>
-            </Lighting>
+            <ColorAdjust contrast="1.0" hue="0.69" saturation="1.0">
+               <input>
+                  <Shadow>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Shadow>
+               </input>
+            </ColorAdjust>
          </effect></Separator>
    </children>
 </AnchorPane>

@@ -76,18 +76,18 @@ public class Controller implements Initializable{
                 int position_x = col * 50 + 2;
                 // defines the width of the square as 46 instead of 50, to account for the 4px total of blank space caused by the offset
                 // as we are drawing squares, the height is going to be the same
-                int width = 46;
+                double width = 45.4;
                 // set the fill color to white (you could set it to whatever you want)
                 context.setFill(Color.ORANGE);
-                // draw a rounded rectangle with the calculated position and width. The last two arguments specify the rounded corner arcs width and height.
-                // Play around with those if you want.
                 context.fillRoundRect(position_x, position_y, width, width, 10, 10);
+
+
             }
         }
 
         // draw highlight around selected cell
         // set stroke color to res
-        context.setStroke(Color.RED);
+        context.setStroke(Color.GREENYELLOW);
         // set stroke width to 5px
         context.setLineWidth(3);
         // draw a strokeRoundRect using the same technique we used for drawing our board.
