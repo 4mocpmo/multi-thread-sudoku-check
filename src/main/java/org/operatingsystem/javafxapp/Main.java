@@ -1,4 +1,4 @@
-package javaFxApp;
+package org.operatingsystem.javafxapp;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

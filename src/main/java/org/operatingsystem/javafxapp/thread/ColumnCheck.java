@@ -1,6 +1,7 @@
-package javaFxApp.thread;
+package org.operatingsystem.javafxapp.thread;
 
 import java.util.concurrent.Semaphore;
+
 
 public class ColumnCheck implements Runnable{
     final int[][] array;
@@ -9,6 +10,8 @@ public class ColumnCheck implements Runnable{
     int row;
     int col;
     int inputNumber;
+
+
     public ColumnCheck(int[][] array , Semaphore semaphore ,boolean[] checkInputForNumber , int row, int col, int inputNumber) {
         this.inputNumber = inputNumber;
         this.col= col;
@@ -23,17 +26,19 @@ public class ColumnCheck implements Runnable{
         int count = 0;
         try {
             semaphore.acquire();
-            System.out.println(Thread.currentThread().getName() + ": after acquire  -> available permit = "+ semaphore.availablePermits());
-            for (int i = 0 ; i < 9 ; i++){
-               if (array[i][col] == inputNumber){
-                   count++;
-               }
+            System.out.println("[INFO] " + Thread.currentThread().getName() + ": after acquire  -> available permit = " + semaphore.availablePermits());
+            for (int i = 0; i < 9; i++) {
+                if (array[i][col] == inputNumber) {
+                    count++;
+                }
             }
             checkInputForNumber[0] = count <= 1;
             semaphore.release();
-            System.out.println(Thread.currentThread().getName() + ": after release  -> available permit = "+ semaphore.availablePermits());
+            System.out.println("[INFO] " + Thread.currentThread().getName() + ": after release  -> available permit = " + semaphore.availablePermits());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+
     }
 }

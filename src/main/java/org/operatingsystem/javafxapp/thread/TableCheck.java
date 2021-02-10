@@ -1,4 +1,4 @@
-package javaFxApp.thread;
+package org.operatingsystem.javafxapp.thread;
 
 import java.util.concurrent.Semaphore;
 
@@ -7,8 +7,10 @@ public class TableCheck  implements Runnable{
     Semaphore semaphore;
     boolean[] checkInputForNumber;
     int inputNumber;
-    int row1,row2;
-    int col1,col2;
+    int row1;
+    int row2;
+    int col1;
+    int col2;
 
     public TableCheck(int[][] array , Semaphore semaphore , boolean[] checkInputForNumber , int inputNumber , int row , int col) {
         this.inputNumber = inputNumber;
@@ -45,21 +47,23 @@ public class TableCheck  implements Runnable{
     @Override
     public void run() {
         int count = 0;
+
         try {
             semaphore.acquire();
-            System.out.println(Thread.currentThread().getName() + ": after acquire  -> available permit = "+ semaphore.availablePermits());
-                for (int i = row1 ; i <= row2 ;i++){
-                    for (int j = col1 ; j <= col2; j++){
-                        if (array[i][j] == inputNumber){
-                            count++;
-                        }
+            System.out.println("[INFO] " + Thread.currentThread().getName() + ": after acquire  -> available permit = "+ semaphore.availablePermits());
+            for (int i = row1 ; i <= row2 ;i++) {
+                for (int j = col1; j <= col2; j++) {
+                    if (array[i][j] == inputNumber) {
+                        count++;
                     }
                 }
-                checkInputForNumber[2] = count <= 1;
+            }
+            checkInputForNumber[2] = count <= 1;
             semaphore.release();
-            System.out.println(Thread.currentThread().getName() + ": after release  -> available permit = "+ semaphore.availablePermits());
+            System.out.println("[INFO] " + Thread.currentThread().getName() + ": after release  -> available permit = "+ semaphore.availablePermits());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
     }
 }

@@ -1,8 +1,6 @@
-package javaFxApp;
-
+package org.operatingsystem.javafxapp.controller;
 import java.net.URL;
 import java.util.Optional;
-import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.concurrent.Semaphore;
 
@@ -18,18 +16,20 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import javaFxApp.thread.ColumnCheck;
-import javaFxApp.thread.RowCheck;
-import javaFxApp.thread.TableCheck;
+import org.operatingsystem.javafxapp.thread.ColumnCheck;
+import org.operatingsystem.javafxapp.thread.RowCheck;
+import org.operatingsystem.javafxapp.thread.TableCheck;
 
-
+/**
+ * @author mostafa ahmadi , pooria tavana
+ */
 public class Controller implements Initializable{
 
     @FXML
     private Canvas canvas;
-    int player_selected_row;
-    int player_selected_col;
-    int[][] array = new int[9][9];
+    private int playerSelectedRow;
+    private int playerSelectedCol;
+    private int[][] array = new int[9][9];
     Semaphore semaphore = new Semaphore(3);
     //0 index for columnCheck 1 index for row check and 2 index for table check
     boolean[] checkInputForNumber = new boolean[3];
@@ -42,17 +42,21 @@ public class Controller implements Initializable{
 		//Call drawOnCanvas method, with the context we have gotten from the canvas
 		drawOnCanvas(context);
 	}
-
+	/**
+     * @param inputNumber input
+     * @param col column
+     * @param row row
+     * */
 	public boolean resultOfThreadChecking(int inputNumber ,int row , int col){
-	    Thread columnCheck = new Thread(new ColumnCheck(array , semaphore,checkInputForNumber , row ,col , inputNumber));
-	    Thread rowCheck = new Thread(new RowCheck(array , semaphore,checkInputForNumber, row ,col , inputNumber));
-	    Thread tableCheck = new Thread(new TableCheck(array , semaphore,checkInputForNumber,inputNumber,row,col));
+	    Thread columnCheck = new Thread(new ColumnCheck(array , semaphore,checkInputForNumber , row ,col , inputNumber));  // new thread for comlumn check
+	    Thread rowCheck = new Thread(new RowCheck(array , semaphore,checkInputForNumber, row ,col , inputNumber));     // new thread for row check
+	    Thread tableCheck = new Thread(new TableCheck(array , semaphore,checkInputForNumber,inputNumber,row,col));     // new thread for table check
 	    columnCheck.setName("COLUMN THREAD");
 	    tableCheck.setName("TABLE THREAD ");
 	    rowCheck.setName("ROW THREAD   ");
 	    columnCheck.start();
-	    rowCheck.start();
 	    tableCheck.start();
+	    rowCheck.start();
         try {
             columnCheck.join();
             rowCheck.join();
@@ -65,59 +69,32 @@ public class Controller implements Initializable{
     }
     public void drawOnCanvas(GraphicsContext context) {
         context.clearRect(0, 0, 450, 450);
-        // draw white rounded rectangles for our board
         for(int row = 0; row<9; row++) {
             for(int col = 0; col<9; col++) {
-                // finds the y position of the cell, by multiplying the row number by 50, which is the height of a row in pixels
-                // then adds 2, to add some offset
-                int position_y = row * 50 + 2;
-                // finds the x position of the cell, by multiplying the column number by 50, which is the width of a column in pixels
-                // then add 2, to add some offset
-                int position_x = col * 50 + 2;
-                // defines the width of the square as 46 instead of 50, to account for the 4px total of blank space caused by the offset
-                // as we are drawing squares, the height is going to be the same
+                int positionY = row * 50 + 2;
+                int positionX = col * 50 + 2;
                 double width = 45.4;
-                // set the fill color to white (you could set it to whatever you want)
                 context.setFill(Color.ORANGE);
-                context.fillRoundRect(position_x, position_y, width, width, 10, 10);
-
-
+                context.fillRoundRect(positionX, positionY, width, width, 10, 10);
             }
         }
-
-        // draw highlight around selected cell
-        // set stroke color to res
         context.setStroke(Color.GREENYELLOW);
-        // set stroke width to 5px
         context.setLineWidth(3);
-        // draw a strokeRoundRect using the same technique we used for drawing our board.
-        context.strokeRoundRect(player_selected_col * 50 + 2, player_selected_row * 50 + 2, 46, 46, 10, 10);
+        context.strokeRoundRect(playerSelectedCol * 50 + 2.0, playerSelectedRow * 50 + 2.0, 46, 46, 10, 10);
         int testEnd = 0;
         for(int row = 0; row<9; row++) {
             for(int col = 0; col<9; col++) {
-
-                // finds the y position of the cell, by multiplying the row number by 50, which
-                // is the height of a row in pixels then adds 2, to add some offset
-                int position_y = row * 50 + 30;
-
-                // finds the x position of the cell, by multiplying the column number by 50,
-                // which is the width of a column in pixels then add 2, to add some offset
-                int position_x = col * 50 + 20;
-
-                // set the fill color to white (you could set it to whatever you want)
-//                context.setFill(Color.BLACK);
-
-                // set the font, from a new font, constructed from the system one, with size 20
-
+                int positionY = row * 50 + 30;
+                int positionX = col * 50 + 20;
                 context.setFont(new Font(20));
                 if (array[row][col] != 0) {
                     if (!resultOfThreadChecking(array[row][col], row, col)) {
                         context.setFill(Color.RED);
-                        context.fillText(array[row][col] + "", position_x, position_y);
+                        context.fillText(array[row][col] + "", positionX, positionY);
                         testEnd--;
                     } else {
                         context.setFill(Color.BLACK);
-                        context.fillText(array[row][col] + "", position_x, position_y);
+                        context.fillText(array[row][col] + "", positionX, positionY);
                         testEnd++;
                         if (testEnd > 80) {
                             Alert alert = new Alert(Alert.AlertType.NONE);
@@ -132,17 +109,21 @@ public class Controller implements Initializable{
                             stage.getIcons().add(new Image(getClass().getResourceAsStream("/sample/image/1.png")));
                             window.setOnCloseRequest(e -> alert.hide());
                             Optional<ButtonType> result = alert.showAndWait();
-                            if (result.isPresent())
+                            if (result.isPresent()) {
                                 if (result.get() == buttonTypeOne) {
-                                    System.exit(0);
                                     alert.close();
-                                }else
-                                    if (result.get() == buttonTypeTwo){
-                                    for (int k = 0 ; k < 9 ; k++)
-                                        for (int m = 0 ; m < 9 ; m++)
-                                            buttonResetClicked();
+                                    System.exit(0);
+                                } else {
+                                    if (result.get() == buttonTypeTwo) {
+                                        for (int k = 0; k < 9; k++) {
+                                            for (int m = 0; m < 9; m++) {
+                                                buttonResetClicked();
+                                            }
+                                        }
                                         drawOnCanvas(context);
+                                    }
                                 }
+                            }
                         }
                     }
 
@@ -152,14 +133,14 @@ public class Controller implements Initializable{
     }
     public void canvasMouseClicked() {
         canvas.setOnMouseClicked(event -> {
-            int mouse_x = (int) event.getX();
-            int mouse_y = (int) event.getY();
+            int mouseX = (int) event.getX();
+            int mouseY = (int) event.getY();
 
             // convert the mouseX and mouseY into rows and cols
             // we are going to take advantage of the way integers are treated and we are going to divide by a cell's width
             // this way any value between 0 and 449 for x and y is going to give us an integer from 0 to 8, which is exactly what we are after
-            player_selected_row = mouse_y / 50;
-            player_selected_col = mouse_x / 50;
+            playerSelectedRow = mouseY / 50;
+            playerSelectedCol = mouseX / 50;
 
             //get the canvas graphics context and redraw
 
@@ -217,8 +198,8 @@ public class Controller implements Initializable{
              }
          }
         System.out.println("______________________Fill Random__________________________");
-         array = arr;
-         drawOnCanvas(canvas.getGraphicsContext2D());
+        array = arr;
+        drawOnCanvas(canvas.getGraphicsContext2D());
     }
     @FXML
     void buttonExitClicked(){
@@ -226,60 +207,60 @@ public class Controller implements Initializable{
     }
     @FXML
     void buttonClearPressed(){
-        array[player_selected_row][player_selected_col] = 0;
+        array[playerSelectedRow][playerSelectedCol] = 0;
         drawOnCanvas(canvas.getGraphicsContext2D());
     }
     @FXML
     void buttonEightPressed() {
-	    array[player_selected_row][player_selected_col] = 8;
+	    array[playerSelectedRow][playerSelectedCol] = 8;
 	    drawOnCanvas(canvas.getGraphicsContext2D());
     }
 
     @FXML
     void buttonFivePressed() {
-	    array[player_selected_row][player_selected_col] = 5;
+	    array[playerSelectedRow][playerSelectedCol] = 5;
         drawOnCanvas(canvas.getGraphicsContext2D());
     }
 
     @FXML
     void buttonFourPressed() {
-	    array[player_selected_row][player_selected_col] = 4;
+	    array[playerSelectedRow][playerSelectedCol] = 4;
         drawOnCanvas(canvas.getGraphicsContext2D());
     }
 
     @FXML
     void buttonNinePressed() {
-	    array[player_selected_row][player_selected_col] = 9;
+	    array[playerSelectedRow][playerSelectedCol] = 9;
         drawOnCanvas(canvas.getGraphicsContext2D());
     }
 
     @FXML
     void buttonOnePressed() {
-	    array[player_selected_row][player_selected_col] = 1;
+	    array[playerSelectedRow][playerSelectedCol] = 1;
         drawOnCanvas(canvas.getGraphicsContext2D());
     }
 
     @FXML
     void buttonSevenPressed() {
-	    array[player_selected_row][player_selected_col] = 7;
+	    array[playerSelectedRow][playerSelectedCol] = 7;
 	    drawOnCanvas(canvas.getGraphicsContext2D());
     }
 
     @FXML
     void buttonSixPressed() {
-	    array[player_selected_row][player_selected_col] = 6;
+	    array[playerSelectedRow][playerSelectedCol] = 6;
         drawOnCanvas(canvas.getGraphicsContext2D());
     }
 
     @FXML
     void buttonThreePressed() {
-	    array[player_selected_row][player_selected_col] = 3;
+	    array[playerSelectedRow][playerSelectedCol] = 3;
         drawOnCanvas(canvas.getGraphicsContext2D());
     }
 
     @FXML
     void buttonTwoPressed() {
-	    array[player_selected_row][player_selected_col] = 2;
+	    array[playerSelectedRow][playerSelectedCol] = 2;
         drawOnCanvas(canvas.getGraphicsContext2D());
     }
     @FXML
