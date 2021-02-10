@@ -34,7 +34,8 @@ public class RowCheck implements Runnable {
             semaphore.release();
             System.out.println("[INFO] " + Thread.currentThread().getName() + ": after release  -> available permit = " + semaphore.availablePermits());
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.err.println("interrupted!");
+            Thread.currentThread().interrupt();
         }
     }
 }

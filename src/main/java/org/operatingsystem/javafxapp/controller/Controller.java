@@ -1,6 +1,7 @@
 package org.operatingsystem.javafxapp.controller;
 import java.net.URL;
 import java.util.Optional;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.concurrent.Semaphore;
 
@@ -33,7 +34,7 @@ public class Controller implements Initializable{
     Semaphore semaphore = new Semaphore(3);
     //0 index for columnCheck 1 index for row check and 2 index for table check
     boolean[] checkInputForNumber = new boolean[3];
-
+    Random random = new Random();
 
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -47,8 +48,8 @@ public class Controller implements Initializable{
      * @param col column
      * @param row row
      * */
-	public boolean resultOfThreadChecking(int inputNumber ,int row , int col){
-	    Thread columnCheck = new Thread(new ColumnCheck(array , semaphore,checkInputForNumber , row ,col , inputNumber));  // new thread for comlumn check
+	private boolean resultOfThreadChecking(int inputNumber ,int row , int col){
+	    Thread columnCheck = new Thread(new ColumnCheck(array , semaphore,checkInputForNumber , row ,col , inputNumber));  // new thread for column check
 	    Thread rowCheck = new Thread(new RowCheck(array , semaphore,checkInputForNumber, row ,col , inputNumber));     // new thread for row check
 	    Thread tableCheck = new Thread(new TableCheck(array , semaphore,checkInputForNumber,inputNumber,row,col));     // new thread for table check
 	    columnCheck.setName("COLUMN THREAD");
@@ -63,11 +64,42 @@ public class Controller implements Initializable{
             tableCheck.join();
             System.out.println("_________________________________________________");
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.err.println("interrupted!");
+            Thread.currentThread().interrupt();
         }
         return checkInputForNumber[0] && checkInputForNumber[1] && checkInputForNumber[2];
     }
-    public void drawOnCanvas(GraphicsContext context) {
+
+    private Alert getAlert(){
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        alert.setTitle("END");
+        alert.setHeaderText("you complete all element successfully");
+        alert.setContentText("continue or exit?");
+        Window window = alert.getDialogPane().getScene().getWindow();
+        Stage stage = (Stage) window;
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/image/1.png")));
+        window.setOnCloseRequest(e -> alert.hide());
+        return alert;
+    }
+
+    private void showAlert(Alert alert,GraphicsContext context){
+        ButtonType buttonTypeOne = new ButtonType("exit");
+        ButtonType buttonTypeTwo = new ButtonType("again");
+        alert.getButtonTypes().setAll(buttonTypeOne,buttonTypeTwo);
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent()) {
+            if (result.get() == buttonTypeOne) {
+                alert.close();
+                System.exit(0);
+            } else {
+                if (result.get() == buttonTypeTwo) {
+                    buttonResetClicked();
+                    drawOnCanvas(context);
+                }
+            }
+        }
+    }
+    private void drawCanvas(GraphicsContext context){
         context.clearRect(0, 0, 450, 450);
         for(int row = 0; row<9; row++) {
             for(int col = 0; col<9; col++) {
@@ -77,16 +109,21 @@ public class Controller implements Initializable{
                 context.setFill(Color.ORANGE);
                 context.fillRoundRect(positionX, positionY, width, width, 10, 10);
             }
+            context.setStroke(Color.GREENYELLOW);
+            context.setLineWidth(3);
+            context.strokeRoundRect(playerSelectedCol * 50 + 2.0, playerSelectedRow * 50 + 2.0, 46, 46, 10, 10);
         }
-        context.setStroke(Color.GREENYELLOW);
-        context.setLineWidth(3);
-        context.strokeRoundRect(playerSelectedCol * 50 + 2.0, playerSelectedRow * 50 + 2.0, 46, 46, 10, 10);
+    }
+    private void drawOnCanvas(GraphicsContext context) {
         int testEnd = 0;
+        int positionY;
+        int positionX;
+        drawCanvas(context);
+        context.setFont(new Font(20));
         for(int row = 0; row<9; row++) {
             for(int col = 0; col<9; col++) {
-                int positionY = row * 50 + 30;
-                int positionX = col * 50 + 20;
-                context.setFont(new Font(20));
+                positionY = row * 50 + 30;
+                positionX = col * 50 + 20;
                 if (array[row][col] != 0) {
                     if (!resultOfThreadChecking(array[row][col], row, col)) {
                         context.setFill(Color.RED);
@@ -96,37 +133,11 @@ public class Controller implements Initializable{
                         context.setFill(Color.BLACK);
                         context.fillText(array[row][col] + "", positionX, positionY);
                         testEnd++;
-                        if (testEnd > 80) {
-                            Alert alert = new Alert(Alert.AlertType.NONE);
-                            ButtonType buttonTypeOne = new ButtonType("exit");
-                            ButtonType buttonTypeTwo = new ButtonType("again");
-                            alert.setTitle("END");
-                            alert.setHeaderText("you complete all element successfully");
-                            alert.setContentText("continue or exit?");
-                            alert.getButtonTypes().setAll(buttonTypeOne,buttonTypeTwo);
-                            Window window = alert.getDialogPane().getScene().getWindow();
-                            Stage stage = (Stage) window;
-                            stage.getIcons().add(new Image(getClass().getResourceAsStream("/sample/image/1.png")));
-                            window.setOnCloseRequest(e -> alert.hide());
-                            Optional<ButtonType> result = alert.showAndWait();
-                            if (result.isPresent()) {
-                                if (result.get() == buttonTypeOne) {
-                                    alert.close();
-                                    System.exit(0);
-                                } else {
-                                    if (result.get() == buttonTypeTwo) {
-                                        for (int k = 0; k < 9; k++) {
-                                            for (int m = 0; m < 9; m++) {
-                                                buttonResetClicked();
-                                            }
-                                        }
-                                        drawOnCanvas(context);
-                                    }
-                                }
-                            }
-                        }
                     }
-
+                    if (testEnd > 80) {
+                        Alert alert = getAlert();
+                        showAlert(alert , context);
+                    }
                 }
             }
         }
@@ -150,6 +161,7 @@ public class Controller implements Initializable{
 
     @FXML
     void buttonFillRandomClicked(){
+
         int[][] arr;
         int[][] arr2 = {
             {5,3,4,6,7,8,9,1,2},
@@ -184,7 +196,7 @@ public class Controller implements Initializable{
                 {6,7,3,2,4,5,8,1,9},
                 {5,4,1,8,6,9,7,2,3},
         };
-        int a = (int)(Math.random() * (2 + 1) + 0);
+        int a = (random.nextInt(3));
         if (a == 0)
             arr = arr1;
         else if (a == 1)
@@ -192,11 +204,11 @@ public class Controller implements Initializable{
         else
             arr = arr3;
 
-         for (int i = 0 ; i < 7 ; i++){
-             for (int j = 0; j < 7; j++) {
-                 arr[(int)(Math.random() * (8 + 1) + 0)][(int)(Math.random() * (8 + 1) + 0)] = 0 ;
-             }
-         }
+        for (int i = 0 ; i < 7 ; i++){
+            for (int j = 0; j < 7; j++) {
+                arr[random.nextInt(9)][random.nextInt(9)] = 0 ;
+            }
+        }
         System.out.println("______________________Fill Random__________________________");
         array = arr;
         drawOnCanvas(canvas.getGraphicsContext2D());
