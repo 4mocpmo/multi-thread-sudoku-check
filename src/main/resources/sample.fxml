@@ -9,11 +9,11 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="689.0" styleClass="base-pane" stylesheets="@sample.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.operatingsystem.javafxapp.controller.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#groupOnPressedKey" prefHeight="474.0" prefWidth="689.0" styleClass="base-pane" stylesheets="@sample.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.operatingsystem.javafxapp.controller.Controller">
    <children>
    
       <Canvas fx:id="canvas" height="450.0" onMouseClicked="#canvasMouseClicked" width="450.0" AnchorPane.bottomAnchor="-28.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0" />
-      <Group layoutX="379.0" layoutY="120.0" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="60.0">
+      <Group fx:id="group" layoutX="379.0" layoutY="120.0" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="60.0">
          <children>
             <Button layoutX="144.0" layoutY="169.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonNinePressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="9">
                <font>

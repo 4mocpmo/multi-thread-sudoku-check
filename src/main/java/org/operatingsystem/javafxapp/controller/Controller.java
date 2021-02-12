@@ -6,13 +6,16 @@ import java.util.ResourceBundle;
 import java.util.concurrent.Semaphore;
 
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -28,6 +31,8 @@ public class Controller implements Initializable{
 
     @FXML
     private Canvas canvas;
+    @FXML
+    Group group;
     private int playerSelectedRow;
     private int playerSelectedCol;
     private int[][] array = new int[9][9];
@@ -281,6 +286,44 @@ public class Controller implements Initializable{
 	        for (int j = 0 ; j < 9 ; j++){
 	            array[i][j] = 0 ;
             }
+        }
+        drawOnCanvas(canvas.getGraphicsContext2D());
+    }
+    @FXML
+    void groupOnPressedKey(KeyEvent event) {
+	    if (event.getText().equals("w")){
+	        if (playerSelectedRow > 0)
+	            playerSelectedRow -=1;
+	        else if (playerSelectedRow == 0)
+	            playerSelectedRow = 8;
+        }else if (event.getText().equals("s")){
+            if (playerSelectedRow < 8)
+                playerSelectedRow +=1;
+            else if (playerSelectedRow == 8)
+                playerSelectedRow = 0;
+        }
+	    else if (event.getText().equals("a")){
+            if (playerSelectedCol > 0)
+                playerSelectedCol -=1;
+            else if (playerSelectedCol == 0)
+                playerSelectedCol = 8;
+        }
+	    else if (event.getText().equals("d")){
+            if (playerSelectedCol < 8)
+                playerSelectedCol +=1;
+            else if (playerSelectedCol == 8)
+                playerSelectedCol = 0;
+        }
+	    else {
+            try {
+                int number = Integer.parseInt(event.getText());
+                if (number >= 0 && number < 10) {
+                    array[playerSelectedRow][playerSelectedCol] = number;
+                }
+            } catch (java.lang.Exception e) {
+                System.out.println("wrong input");
+            }
+
         }
         drawOnCanvas(canvas.getGraphicsContext2D());
     }
