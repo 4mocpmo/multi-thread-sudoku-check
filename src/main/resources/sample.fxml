@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
@@ -8,149 +9,212 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0"
-            prefWidth="689.0" styleClass="base-pane" stylesheets="@sample.css" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.operatingsystem.javafxapp.controller.Controller">
-
-   <Canvas fx:id="canvas" height="450.0" onMouseClicked="#canvasMouseClicked" width="450.0" AnchorPane.bottomAnchor="-28.0"
-           AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0"/>
-   <Group layoutX="399.0" layoutY="211.0" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="80.0">
-      <Button layoutX="144.0" layoutY="169.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false"
-              onAction="#buttonNinePressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="9">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="689.0" styleClass="base-pane" stylesheets="@sample.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.operatingsystem.javafxapp.controller.Controller">
+   <children>
+   
+      <Canvas fx:id="canvas" height="450.0" onMouseClicked="#canvasMouseClicked" width="450.0" AnchorPane.bottomAnchor="-28.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0" />
+      <Group layoutX="379.0" layoutY="120.0" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="60.0">
+         <children>
+            <Button layoutX="144.0" layoutY="169.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonNinePressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="9">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="61.0" layoutY="169.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonEightPressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="8">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Button>
+            <Button defaultButton="true" layoutX="-22.0" layoutY="84.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonFourPressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="4">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Button>
+            <Button defaultButton="true" layoutX="144.0" layoutY="84.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonSixPressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="6">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Button>
+            <Button defaultButton="true" layoutX="61.0" layoutY="84.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonFivePressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="5">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="-22.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonOnePressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="1">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="144.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonThreePressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="3">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="61.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonTwoPressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="2">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="-22.0" layoutY="169.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonSevenPressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="7">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Button>
+            <Separator layoutX="58.0" layoutY="4.0" orientation="VERTICAL" prefHeight="326.0" prefWidth="0.0">
+               <effect>
+                  <ColorAdjust contrast="1.0" hue="0.69" saturation="1.0">
+                     <input>
+                        <Shadow>
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </Shadow>
+                     </input>
+                  </ColorAdjust>
+               </effect>
+            </Separator>
+            <Separator layoutX="141.0" layoutY="4.0" orientation="VERTICAL" prefHeight="325.0" prefWidth="7.0">
+               <effect>
+                  <ColorAdjust contrast="1.0" hue="0.69" saturation="1.0">
+                     <input>
+                        <Shadow>
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </Shadow>
+                     </input>
+                  </ColorAdjust>
+               </effect>
+            </Separator>
+            <Separator layoutX="-18.0" layoutY="76.0" prefHeight="9.0" prefWidth="238.0">
+               <effect>
+                  <ColorAdjust contrast="1.0" hue="0.69" saturation="1.0">
+                     <input>
+                        <Shadow>
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </Shadow>
+                     </input>
+                  </ColorAdjust>
+               </effect>
+            </Separator>
+            <Separator layoutX="-18.0" layoutY="165.0" prefHeight="9.0" prefWidth="238.0">
+               <effect>
+                  <ColorAdjust contrast="1.0" hue="0.69" saturation="1.0">
+                     <input>
+                        <Shadow>
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </Shadow>
+                     </input>
+                  </ColorAdjust>
+               </effect>
+            </Separator>
+            <Button layoutX="-22.0" layoutY="255.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonClearPressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="clear">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="61.0" layoutY="255.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonResetClicked" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="reset">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="144.0" layoutY="254.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonExitClicked" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="exit">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Button>
+            <Separator layoutX="-17.0" layoutY="248.0" prefHeight="9.0" prefWidth="238.0">
+               <effect>
+                  <ColorAdjust contrast="1.0" hue="0.69" saturation="1.0">
+                     <input>
+                        <Shadow>
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </Shadow>
+                     </input>
+                  </ColorAdjust>
+               </effect>
+            </Separator>
+            <Button layoutX="-24.0" layoutY="341.0" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonFillRandomClicked" prefHeight="60.0" prefWidth="250.0" stylesheets="@sample.css" text="fillRandom">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Button>
+            <Separator layoutX="-17.0" layoutY="333.0" prefHeight="9.0" prefWidth="238.0">
+               <effect>
+                  <ColorAdjust contrast="1.0" hue="0.69" saturation="1.0">
+                     <input>
+                        <Shadow>
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </Shadow>
+                     </input>
+                  </ColorAdjust>
+               </effect>
+            </Separator>
+         </children>
+      </Group>
+      <Separator layoutX="197.0" layoutY="55.0" orientation="VERTICAL" prefHeight="441.0" prefWidth="6.0">
+         <effect>
+            <ColorAdjust contrast="1.0" hue="0.69" saturation="1.0">
+               <input>
+                  <Shadow>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Shadow>
+               </input>
+            </ColorAdjust>
+         </effect>
+      </Separator>
+      <Separator layoutX="348.0" layoutY="55.0" orientation="VERTICAL" prefHeight="441.0" prefWidth="6.0">
+         <effect>
+            <ColorAdjust contrast="1.0" hue="0.69" saturation="1.0">
+               <input>
+                  <Shadow>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Shadow>
+               </input>
+            </ColorAdjust>
+         </effect>
+      </Separator>
+      <Separator layoutX="50.0" layoutY="348.0" prefHeight="6.0" prefWidth="450.0">
+         <effect>
+            <ColorAdjust contrast="1.0" hue="0.69" saturation="1.0">
+               <input>
+                  <Shadow>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Shadow>
+               </input>
+            </ColorAdjust>
+         </effect>
+      </Separator>
+      <Separator layoutX="50.0" layoutY="198.0" prefHeight="6.0" prefWidth="450.0">
+         <effect>
+            <ColorAdjust contrast="1.0" hue="0.69" saturation="1.0">
+               <input>
+                  <Shadow>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Shadow>
+               </input>
+            </ColorAdjust>
+         </effect>
+      </Separator>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="356.0" layoutY="-89.0" prefHeight="63.0" prefWidth="285.0" text="operating system" textAlignment="CENTER" textFill="#ff5900" AnchorPane.bottomAnchor="500.0" AnchorPane.rightAnchor="48.0">
          <font>
-            <Font name="System Bold Italic" size="16.0"/>
-         </font>
-      </Button>
-      <Button layoutX="61.0" layoutY="169.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false"
-              onAction="#buttonEightPressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="8">
-         <font>
-            <Font name="System Bold Italic" size="16.0"/>
-         </font>
-      </Button>
-      <Button defaultButton="true" layoutX="-22.0" layoutY="84.0" minHeight="80.0" minWidth="80.0"
-              mnemonicParsing="false" onAction="#buttonFourPressed" prefHeight="60.0" prefWidth="60.0"
-              stylesheets="@sample.css" text="4">
-         <font>
-            <Font name="System Bold Italic" size="16.0"/>
-         </font>
-      </Button>
-      <Button defaultButton="true" layoutX="144.0" layoutY="84.0" minHeight="80.0" minWidth="80.0"
-              mnemonicParsing="false" onAction="#buttonSixPressed" prefHeight="60.0" prefWidth="60.0"
-              stylesheets="@sample.css" text="6">
-         <font>
-            <Font name="System Bold Italic" size="16.0"/>
-         </font>
-      </Button>
-      <Button defaultButton="true" layoutX="61.0" layoutY="84.0" minHeight="80.0" minWidth="80.0"
-              mnemonicParsing="false" onAction="#buttonFivePressed" prefHeight="60.0" prefWidth="60.0"
-              stylesheets="@sample.css" text="5">
-         <font>
-            <Font name="System Bold Italic" size="16.0"/>
-         </font>
-      </Button>
-      <Button layoutX="-22.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonOnePressed"
-              prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="1">
-         <font>
-            <Font name="System Bold Italic" size="16.0"/>
-         </font>
-      </Button>
-      <Button layoutX="144.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonThreePressed"
-              prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="3">
-         <font>
-            <Font name="System Bold Italic" size="16.0"/>
-         </font>
-      </Button>
-      <Button layoutX="61.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonTwoPressed"
-              prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="2">
-         <font>
-            <Font name="System Bold Italic" size="16.0"/>
-         </font>
-      </Button>
-      <Button layoutX="-22.0" layoutY="169.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false"
-              onAction="#buttonSevenPressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="7">
-         <font>
-            <Font name="System Bold Italic" size="16.0"/>
-         </font>
-      </Button>
-   </Group>
-   <Button layoutX="466.0" layoutY="404.0" mnemonicParsing="false" onAction="#buttonResetClicked" prefHeight="33.0"
-           prefWidth="72.0" stylesheets="@sample.css" text="reset" AnchorPane.bottomAnchor="28.0"
-           AnchorPane.rightAnchor="162.0">
-      <font>
-         <Font name="System Bold Italic" size="14.0"/>
-      </font>
-   </Button>
-   <Button layoutX="386.0" layoutY="404.0" mnemonicParsing="false" onAction="#buttonClearPressed" prefHeight="33.0"
-           prefWidth="70.0" stylesheets="@sample.css" text="clear" AnchorPane.bottomAnchor="28.0"
-           AnchorPane.rightAnchor="242.0">
-      <font>
-         <Font name="System Bold Italic" size="14.0"/>
-      </font>
-   </Button>
-   <Button layoutX="546.0" layoutY="404.0" mnemonicParsing="false" onAction="#buttonExitClicked" prefHeight="33.0"
-           prefWidth="70.0" stylesheets="@sample.css" text="exit" AnchorPane.bottomAnchor="28.0"
-           AnchorPane.rightAnchor="82.0">
-      <font>
-         <Font name="System Bold Italic" size="14.0"/>
-      </font>
-   </Button>
-   <Button layoutX="253.0" layoutY="404.0" mnemonicParsing="false" onAction="#buttonFillRandomClicked" prefHeight="33.0"
-           prefWidth="120.0" stylesheets="@sample.css" text="fillRandom" AnchorPane.bottomAnchor="28.0"
-           AnchorPane.rightAnchor="321.0">
-      <font>
-         <Font name="System Bold Italic" size="14.0"/>
-      </font>
-   </Button>
-   <Separator layoutX="197.0" layoutY="55.0" orientation="VERTICAL" prefHeight="441.0" prefWidth="6.0">
-      <effect>
-         <ColorAdjust contrast="1.0" hue="0.69" saturation="1.0">
-            <input>
-               <Shadow>
-                  <color>
-                     <Color red="1.0"/>
-                  </color>
-               </Shadow>
-            </input>
-         </ColorAdjust>
-      </effect>
-   </Separator>
-   <Separator layoutX="348.0" layoutY="55.0" orientation="VERTICAL" prefHeight="441.0" prefWidth="6.0">
-      <effect>
-         <ColorAdjust contrast="1.0" hue="0.69" saturation="1.0">
-            <input>
-               <Shadow>
-                  <color>
-                     <Color red="1.0"/>
-                  </color>
-               </Shadow>
-            </input>
-         </ColorAdjust>
-      </effect>
-   </Separator>
-   <Separator layoutX="50.0" layoutY="348.0" prefHeight="6.0" prefWidth="450.0">
-      <effect>
-         <ColorAdjust contrast="1.0" hue="0.69" saturation="1.0">
-            <input>
-               <Shadow>
-                  <color>
-                     <Color red="1.0"/>
-                  </color>
-               </Shadow>
-            </input>
-         </ColorAdjust>
-      </effect>
-   </Separator>
-   <Separator layoutX="50.0" layoutY="198.0" prefHeight="6.0" prefWidth="450.0">
-      <effect>
-         <ColorAdjust contrast="1.0" hue="0.69" saturation="1.0">
-            <input>
-               <Shadow>
-                  <color>
-                     <Color red="1.0"/>
-                  </color>
-               </Shadow>
-            </input>
-         </ColorAdjust>
-      </effect>
-   </Separator>
+            <Font name="System Bold Italic" size="24.0" />
+         </font></Label>
+   </children>
 </AnchorPane>

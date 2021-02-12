@@ -13,8 +13,9 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/sample.fxml"));
         primaryStage.setTitle("operating system project");
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/image/1.png")));
-        primaryStage.setScene(new Scene(root, 1000, 600));
-        primaryStage.setResizable(false);
+        primaryStage.setScene(new Scene(root, 800, 590));
+        primaryStage.setMinWidth(850);
+        primaryStage.setMinHeight(590);
         primaryStage.show();
     }
 

@@ -31,12 +31,6 @@
 	-fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
 }
 
-.label{
-	-fx-text-fill: black;
-	-fx-font-weight: bold;
-	-fx-font-size: 23px;
-}
-
 #round-red {
 	-fx-background-color: linear-gradient(#ff5400, #be1d00);
 	-fx-background-radius: 30;
