@@ -291,39 +291,42 @@ public class Controller implements Initializable{
     }
     @FXML
     void groupOnPressedKey(KeyEvent event) {
-	    if (event.getText().equals("w")){
-	        if (playerSelectedRow > 0)
-	            playerSelectedRow -=1;
-	        else if (playerSelectedRow == 0)
-	            playerSelectedRow = 8;
-        }else if (event.getText().equals("s")){
-            if (playerSelectedRow < 8)
-                playerSelectedRow +=1;
-            else if (playerSelectedRow == 8)
-                playerSelectedRow = 0;
-        }
-	    else if (event.getText().equals("a")){
-            if (playerSelectedCol > 0)
-                playerSelectedCol -=1;
-            else if (playerSelectedCol == 0)
-                playerSelectedCol = 8;
-        }
-	    else if (event.getText().equals("d")){
-            if (playerSelectedCol < 8)
-                playerSelectedCol +=1;
-            else if (playerSelectedCol == 8)
-                playerSelectedCol = 0;
-        }
-	    else {
-            try {
-                int number = Integer.parseInt(event.getText());
-                if (number >= 0 && number < 10) {
-                    array[playerSelectedRow][playerSelectedCol] = number;
+        switch (event.getText()) {
+            case "w":
+                if (playerSelectedRow > 0)
+                    playerSelectedRow -= 1;
+                else if (playerSelectedRow == 0)
+                    playerSelectedRow = 8;
+                break;
+            case "s":
+                if (playerSelectedRow < 8)
+                    playerSelectedRow += 1;
+                else if (playerSelectedRow == 8)
+                    playerSelectedRow = 0;
+                break;
+            case "a":
+                if (playerSelectedCol > 0)
+                    playerSelectedCol -= 1;
+                else if (playerSelectedCol == 0)
+                    playerSelectedCol = 8;
+                break;
+            case "d":
+                if (playerSelectedCol < 8)
+                    playerSelectedCol += 1;
+                else if (playerSelectedCol == 8)
+                    playerSelectedCol = 0;
+                break;
+            default:
+                try {
+                    int number = Integer.parseInt(event.getText());
+                    if (number >= 0 && number < 10) {
+                        array[playerSelectedRow][playerSelectedCol] = number;
+                    }
+                } catch (Exception e) {
+                    System.out.println("wrong input");
                 }
-            } catch (java.lang.Exception e) {
-                System.out.println("wrong input");
-            }
 
+                break;
         }
         drawOnCanvas(canvas.getGraphicsContext2D());
     }
