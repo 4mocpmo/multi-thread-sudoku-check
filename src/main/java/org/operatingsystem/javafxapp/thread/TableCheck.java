@@ -1,10 +1,8 @@
 package org.operatingsystem.javafxapp.thread;
 
-import java.util.concurrent.Semaphore;
 
 public class TableCheck  implements Runnable{
     final int[][] array;
-    Semaphore semaphore;
     boolean[] checkInputForNumber;
     int inputNumber;
     int row1;
@@ -12,11 +10,10 @@ public class TableCheck  implements Runnable{
     int col1;
     int col2;
 
-    public TableCheck(int[][] array , Semaphore semaphore , boolean[] checkInputForNumber , int inputNumber , int row , int col) {
+    public TableCheck(int[][] array ,  boolean[] checkInputForNumber , int inputNumber , int row , int col) {
         this.inputNumber = inputNumber;
         this.checkInputForNumber = checkInputForNumber;
         this.array = array;
-        this.semaphore = semaphore;
 
         if (row >= 0 && row < 3) {
             row1 = 0;
@@ -47,24 +44,15 @@ public class TableCheck  implements Runnable{
     @Override
     public void run() {
         int count = 0;
-
-        try {
-            semaphore.acquire();
-            System.out.println("[INFO] " + Thread.currentThread().getName() + ": after acquire  -> available permit = "+ semaphore.availablePermits());
-            for (int i = row1 ; i <= row2 ;i++) {
-                for (int j = col1; j <= col2; j++) {
-                    if (array[i][j] == inputNumber) {
-                        count++;
-                    }
+        for (int i = row1 ; i <= row2 ;i++) {
+            for (int j = col1; j <= col2; j++) {
+                if (array[i][j] == inputNumber) {
+                    count++;
                 }
             }
-            checkInputForNumber[2] = count <= 1;
-            semaphore.release();
-            System.out.println("[INFO] " + Thread.currentThread().getName() + ": after release  -> available permit = "+ semaphore.availablePermits());
-        } catch (InterruptedException e) {
-            System.err.println("interrupted!");
-            Thread.currentThread().interrupt();
         }
+        System.out.println(Thread.currentThread().getName() + " done");
+        checkInputForNumber[2] = count <= 1;
 
     }
 }

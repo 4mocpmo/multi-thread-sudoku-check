@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 import java.util.concurrent.Semaphore;
 
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -54,9 +53,9 @@ public class Controller implements Initializable{
      * @param row row
      * */
 	private boolean resultOfThreadChecking(int inputNumber ,int row , int col){
-	    Thread columnCheck = new Thread(new ColumnCheck(array , semaphore,checkInputForNumber , row ,col , inputNumber));  // new thread for column check
-	    Thread rowCheck = new Thread(new RowCheck(array , semaphore,checkInputForNumber, row ,col , inputNumber));     // new thread for row check
-	    Thread tableCheck = new Thread(new TableCheck(array , semaphore,checkInputForNumber,inputNumber,row,col));     // new thread for table check
+	    Thread columnCheck = new Thread(new ColumnCheck(array ,checkInputForNumber , row ,col , inputNumber));  // new thread for column check
+	    Thread rowCheck = new Thread(new RowCheck(array ,checkInputForNumber, row ,col , inputNumber));     // new thread for row check
+	    Thread tableCheck = new Thread(new TableCheck(array , checkInputForNumber,inputNumber,row,col));     // new thread for table check
 	    columnCheck.setName("COLUMN THREAD");
 	    tableCheck.setName("TABLE THREAD ");
 	    rowCheck.setName("ROW THREAD   ");
@@ -67,7 +66,6 @@ public class Controller implements Initializable{
             columnCheck.join();
             rowCheck.join();
             tableCheck.join();
-            System.out.println("_________________________________________________");
         } catch (InterruptedException e) {
             System.err.println("interrupted!");
             Thread.currentThread().interrupt();

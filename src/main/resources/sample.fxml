@@ -15,47 +15,47 @@
       <Canvas fx:id="canvas" height="450.0" onMouseClicked="#canvasMouseClicked" width="450.0" AnchorPane.bottomAnchor="-28.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0" />
       <Group fx:id="group" layoutX="379.0" layoutY="120.0" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="60.0">
          <children>
-            <Button layoutX="144.0" layoutY="169.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonNinePressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="9">
+            <Button layoutX="144.0" layoutY="169.0" mnemonicParsing="false" onAction="#buttonNinePressed" prefHeight="80.0" prefWidth="80.0" stylesheets="@sample.css" text="9">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </Button>
-            <Button layoutX="61.0" layoutY="169.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonEightPressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="8">
+            <Button layoutX="61.0" layoutY="169.0" mnemonicParsing="false" onAction="#buttonEightPressed" prefHeight="80.0" prefWidth="80.0" stylesheets="@sample.css" text="8">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </Button>
-            <Button defaultButton="true" layoutX="-22.0" layoutY="84.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonFourPressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="4">
+            <Button defaultButton="true" layoutX="-22.0" layoutY="84.0" mnemonicParsing="false" onAction="#buttonFourPressed" prefHeight="80.0" prefWidth="80.0" stylesheets="@sample.css" text="4">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </Button>
-            <Button defaultButton="true" layoutX="144.0" layoutY="84.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonSixPressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="6">
+            <Button defaultButton="true" layoutX="144.0" layoutY="84.0" mnemonicParsing="false" onAction="#buttonSixPressed" prefHeight="80.0" prefWidth="80.0" stylesheets="@sample.css" text="6">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </Button>
-            <Button defaultButton="true" layoutX="61.0" layoutY="84.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonFivePressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="5">
+            <Button defaultButton="true" layoutX="61.0" layoutY="84.0" mnemonicParsing="false" onAction="#buttonFivePressed" prefHeight="80.0" prefWidth="80.0" stylesheets="@sample.css" text="5">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </Button>
-            <Button layoutX="-22.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonOnePressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="1">
+            <Button layoutX="-22.0" mnemonicParsing="false" onAction="#buttonOnePressed" prefHeight="80.0" prefWidth="80.0" stylesheets="@sample.css" text="1">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </Button>
-            <Button layoutX="144.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonThreePressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="3">
+            <Button layoutX="144.0" mnemonicParsing="false" onAction="#buttonThreePressed" prefHeight="80.0" prefWidth="80.0" stylesheets="@sample.css" text="3">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </Button>
-            <Button layoutX="61.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonTwoPressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="2">
+            <Button layoutX="61.0" mnemonicParsing="false" onAction="#buttonTwoPressed" prefHeight="80.0" prefWidth="80.0" stylesheets="@sample.css" text="2">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </Button>
-            <Button layoutX="-22.0" layoutY="169.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonSevenPressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="7">
+            <Button layoutX="-22.0" layoutY="169.0" mnemonicParsing="false" onAction="#buttonSevenPressed" prefHeight="80.0" prefWidth="80.0" stylesheets="@sample.css" text="7">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
@@ -112,17 +112,17 @@
                   </ColorAdjust>
                </effect>
             </Separator>
-            <Button layoutX="-22.0" layoutY="255.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonClearPressed" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="clear">
+            <Button layoutX="-22.0" layoutY="255.0" mnemonicParsing="false" onAction="#buttonClearPressed" prefHeight="80.0" prefWidth="80.0" stylesheets="@sample.css" text="clear">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="61.0" layoutY="255.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonResetClicked" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="reset">
+            <Button layoutX="61.0" layoutY="255.0" mnemonicParsing="false" onAction="#buttonResetClicked" prefHeight="80.0" prefWidth="80.0" stylesheets="@sample.css" text="reset">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="144.0" layoutY="254.0" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonExitClicked" prefHeight="60.0" prefWidth="60.0" stylesheets="@sample.css" text="exit">
+            <Button layoutX="144.0" layoutY="254.0" mnemonicParsing="false" onAction="#buttonExitClicked" prefHeight="80.0" prefWidth="80.0" stylesheets="@sample.css" text="exit">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
@@ -140,7 +140,7 @@
                   </ColorAdjust>
                </effect>
             </Separator>
-            <Button layoutX="-24.0" layoutY="341.0" minHeight="60.0" minWidth="80.0" mnemonicParsing="false" onAction="#buttonFillRandomClicked" prefHeight="60.0" prefWidth="250.0" stylesheets="@sample.css" text="fillRandom">
+            <Button layoutX="-24.0" layoutY="341.0" mnemonicParsing="false" onAction="#buttonFillRandomClicked" prefHeight="60.0" prefWidth="250.0" stylesheets="@sample.css" text="fillRandom">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
