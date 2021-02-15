@@ -3,7 +3,6 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.Random;
 import java.util.ResourceBundle;
-import java.util.concurrent.Semaphore;
 
 
 import javafx.fxml.FXML;
@@ -35,7 +34,6 @@ public class Controller implements Initializable{
     private int playerSelectedRow;
     private int playerSelectedCol;
     private int[][] array = new int[9][9];
-    Semaphore semaphore = new Semaphore(3);
     //0 index for columnCheck 1 index for row check and 2 index for table check
     boolean[] checkInputForNumber = new boolean[3];
     Random random = new Random();
@@ -288,7 +286,7 @@ public class Controller implements Initializable{
         drawOnCanvas(canvas.getGraphicsContext2D());
     }
     @FXML
-    void groupOnPressedKey(KeyEvent event) {
+    void onPressedKey(KeyEvent event) {
         switch (event.getText()) {
             case "w":
                 if (playerSelectedRow > 0)
